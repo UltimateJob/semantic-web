@@ -1,0 +1,48 @@
+{
+  "name": "semantic-web",
+  "version": "0.5.0-dev",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "vite build --mode production",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:framework:v050": "playwright test -c playwright.framework-v050.config.js",
+    "test:e2e:simulation-real": "SEMANTIC_REAL_SIMULATION_E2E=1 playwright test tests/e2e/simulation-spatial-real.spec.js",
+    "test:release": "bash tests/release/validate-release.test.sh",
+    "lint": "eslint src && prettier --check src"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.7.0",
+    "dockview-vue": "7.0.4",
+    "dompurify": "^3.1.6",
+    "element-plus": "^2.8.0",
+    "highlight.js": "^11.10.0",
+    "markdown-it": "^14.1.0",
+    "pinia": "^3.0.0",
+    "pinia-plugin-persistedstate": "^4.0.0",
+    "three": "^0.185.1",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0",
+    "vue3-toastify": "^0.2.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@playwright/test": "1.62.1",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-vue": "^9.27.0",
+    "globals": "^15.9.0",
+    "jsdom": "^30.0.1",
+    "prettier": "^3.3.0",
+    "sass-embedded": "^1.77.8",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.0"
+  }
+}

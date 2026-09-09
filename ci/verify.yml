@@ -1,0 +1,53 @@
+# 开发 PR（功能分支 push）和合入 MR（目标 develop）共用快路径。不跑 Playwright。
+lint:
+  stage: validate
+  extends:
+    - .verify_rules
+    - .npm_cache
+    - .node_image
+  timeout: 10m
+  script:
+    - npm ci --cache .npm --prefer-offline --registry="$npm_config_registry"
+    - npm run lint
+    - bash ci/validate-release-assets.sh ci/release.yml
+
+test:
+  stage: test
+  extends:
+    - .verify_rules
+    - .npm_cache
+    - .node_image
+  timeout: 15m
+  script:
+    - npm ci --cache .npm --prefer-offline --registry="$npm_config_registry"
+    - npm run test
+    - npm run test:release
+
+gitleaks:
+  stage: security
+  extends:
+    - .verify_rules
+    - .node_image
+  timeout: 10m
+  script:
+    - bash ci/install-gitleaks.sh
+    - .ci-bin/gitleaks detect --source . --config .gitleaks.toml --verbose
+
+build:
+  stage: build
+  extends:
+    - .verify_rules
+    - .npm_cache
+    - .node_image
+  timeout: 15m
+  needs:
+    - lint
+    - test
+    - gitleaks
+  script:
+    - npm ci --cache .npm --prefer-offline --registry="$npm_config_registry"
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 7 days

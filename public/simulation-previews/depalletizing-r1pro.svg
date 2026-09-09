@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">R1 Pro 拆码垛场景预览</title>
+  <desc id="desc">移动双臂机器人位于两个托盘和箱体之间</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#244765"/>
+      <stop offset="1" stop-color="#101824"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#6b86a0" stroke-opacity=".22"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="360" rx="20" fill="url(#sky)"/>
+  <path d="M0 190H640V360H0Z" fill="#172535"/>
+  <path d="M0 190H640V360H0Z" fill="url(#grid)"/>
+  <ellipse cx="318" cy="309" rx="72" ry="17" fill="#070c12" opacity=".55"/>
+  <g transform="translate(267 91)">
+    <rect x="17" y="89" width="72" height="104" rx="25" fill="#c9d3d8"/>
+    <rect x="27" y="25" width="52" height="48" rx="20" fill="#dce4e7"/>
+    <rect x="35" y="36" width="36" height="18" rx="9" fill="#152332"/>
+    <path d="M21 105-14 141-5 150 35 122M85 105l35 36-9 9-40-28" fill="none" stroke="#b8c4ca" stroke-width="17" stroke-linecap="round"/>
+    <rect x="-16" y="143" width="22" height="35" rx="7" fill="#68d391"/>
+    <rect x="100" y="143" width="22" height="35" rx="7" fill="#68d391"/>
+    <rect x="4" y="188" width="98" height="34" rx="10" fill="#ced7b4"/>
+    <circle cx="22" cy="222" r="10" fill="#263747"/>
+    <circle cx="83" cy="222" r="10" fill="#263747"/>
+  </g>
+  <g transform="translate(76 260)">
+    <path d="M0 38h174l-16 28H16Z" fill="#273b8f"/>
+    <path d="M10 28h154v18H10Z" fill="#334bb2"/>
+    <rect x="45" y="-30" width="58" height="58" rx="4" fill="#e6e9ec"/>
+    <rect x="105" y="-10" width="45" height="38" rx="4" fill="#c8d0d6"/>
+  </g>
+  <g transform="translate(446 265)">
+    <path d="M0 34h145l-14 26H14Z" fill="#273b8f"/>
+    <path d="M9 25h127v17H9Z" fill="#334bb2"/>
+    <rect x="38" y="-42" width="64" height="67" rx="4" fill="#f2f4f6"/>
+  </g>
+  <g fill="#fff">
+    <text x="28" y="42" font-family="system-ui,sans-serif" font-size="24" font-weight="700">R1 Pro 拆码垛</text>
+    <text x="29" y="68" font-family="system-ui,sans-serif" font-size="14" opacity=".72">Native MuJoCo · 3 Layouts · RGBD</text>
+  </g>
+</svg>

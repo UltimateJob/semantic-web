@@ -1,0 +1,149 @@
+/*
+Copyright 2026 InsightOS
+SPDX-License-Identifier: Apache-2.0
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+// 全局样式入口：设计令牌 + 基础排版（main.js 引入）
+@use './tokens';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--sf-bg-canvas);
+  color: var(--sf-text-primary);
+  font-size: var(--sf-font-md);
+  font-family:
+    Inter,
+    'Noto Sans CJK SC',
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'PingFang SC',
+    'Microsoft YaHei',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--sf-brand);
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--sf-brand) 55%, transparent);
+  outline-offset: 2px;
+}
+
+// Compact, always discoverable workspace scrollbars.
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sf-text-disabled) 58%, transparent);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sf-text-disabled) transparent;
+}
+
+// ---- 布局工具类（AppShell v2 密度规格，组件可直接取用）----
+
+// 面板容器：卡片/分区的统一底色 + 边框 + 圆角 + 内距
+.sf-panel {
+  background: var(--sf-bg-secondary);
+  border: 1px solid var(--sf-border-light);
+  border-radius: var(--sf-radius-m);
+  padding: var(--sf-space-3);
+  box-shadow: var(--sf-shadow-sm);
+}
+
+.sf-page-title {
+  margin: 0;
+  color: var(--sf-text-primary);
+  font-size: var(--sf-font-xl);
+  line-height: 1.25;
+}
+
+.sf-page-subtitle {
+  margin: 6px 0 0;
+  color: var(--sf-text-secondary);
+  font-size: var(--sf-font-sm);
+  line-height: 1.6;
+}
+
+// 列表行：40px 行高紧凑密度，hover/active 两态（active 用三级底色，主色块留给一级导航）
+.sf-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  height: var(--sf-nav-h);
+  padding: 0 var(--sf-space-3);
+  border-radius: var(--sf-radius-m);
+  color: var(--sf-text-secondary);
+  font-size: var(--sf-font-sm);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--sf-bg-hover);
+    color: var(--sf-text-primary);
+  }
+
+  &.is-active {
+    background: var(--sf-bg-tertiary);
+    color: var(--sf-text-primary);
+  }
+}
+
+// 状态点：8px 圆点，颜色取状态四元组 text 色（data-status="running|idle|starting|stopped|success|warning|danger"）
+.sf-status-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--sf-text-disabled);
+
+  @each $name in running, idle, starting, stopped, success, warning, danger {
+    &[data-status='#{$name}'] {
+      background: var(--sf-status-#{$name}-text);
+    }
+  }
+}

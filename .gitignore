@@ -1,0 +1,13 @@
+node_modules/
+.npm/
+dist/
+playwright-report/
+test-results/
+.output/
+.ci-bin/
+.env
+.env.*
+!.env.example
+.DS_Store
+playwright-report/
+test-results/
