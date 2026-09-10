@@ -41,6 +41,8 @@ The production output is `dist/`. Serve it with an HTTP server and configure the
 
 [Detailed technical reference](README.reference.md) · [Environment example](.env.example)
 
+[CI and Tag releases](docs/ci-release.md)
+
 ## License
 
 Copyright 2026 InsightOS. First-party code: [Apache-2.0](LICENSE). See [NOTICE](NOTICE) and [license scope](LICENSE_SCOPE.md) for third-party components and assets.
