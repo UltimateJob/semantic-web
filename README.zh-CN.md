@@ -41,6 +41,8 @@ npm run build
 
 [详细技术参考](README.reference.md) · [环境配置示例](.env.example)
 
+[CI 与 Tag 制品发布](docs/ci-release.md)
+
 ## 许可证
 
 Copyright 2026 InsightOS。自有代码采用 [Apache-2.0](LICENSE)；第三方组件与资产请查看 [NOTICE](NOTICE) 和[许可范围](LICENSE_SCOPE.md)。
