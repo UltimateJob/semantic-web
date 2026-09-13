@@ -376,6 +376,61 @@ describe('simulation store', () => {
     expect(store.sensors[0].sensor_id).toBe('camera.rgb')
   })
 
+  describe.each(['legacy', 'project'])('%s scene renderer selection', (route) => {
+    async function start(store, options) {
+      if (route === 'legacy') return store.startScene('depalletizing', options)
+      return store.startProjectScene(
+        {
+          project_scene_id: 'project-scene-1',
+          catalog_scene_id: 'depalletizing-r1pro',
+          scene_version: '0.5.0',
+          default_variant_id: 'layout_smoke'
+        },
+        options
+      )
+    }
+
+    it.each(['cgl', 'egl', 'osmesa'])(
+      'uses the Runtime configured %s backend by default',
+      async (configured) => {
+        const store = useSimulationStore()
+        store.resetForProject('project-1')
+        const endpoint = route === 'legacy' ? api.startScene : api.startProjectScene
+        endpoint.mockImplementation(async (_project, _scene, request) => {
+          const effective = request.render_backend === 'auto' ? configured : request.render_backend
+          if (effective !== configured)
+            throw new Error(`configured:${configured}, requested:${effective}`)
+          return { instance: { ...instance, render_backend: effective } }
+        })
+
+        await start(store, { layout: 'layout001' })
+
+        expect(endpoint).toHaveBeenCalledWith(
+          'project-1',
+          expect.any(String),
+          expect.objectContaining({ render_backend: 'auto' })
+        )
+        endpoint.mockReset()
+      }
+    )
+
+    it.each(['cgl', 'egl', 'glfw'])('preserves an explicit %s backend', async (backend) => {
+      const store = useSimulationStore()
+      store.resetForProject('project-1')
+      const endpoint = route === 'legacy' ? api.startScene : api.startProjectScene
+      endpoint.mockResolvedValue({ instance })
+
+      await start(store, { layout: 'layout001', render_backend: backend })
+
+      expect(endpoint).toHaveBeenCalledWith(
+        'project-1',
+        expect.any(String),
+        expect.objectContaining({ render_backend: backend })
+      )
+      endpoint.mockReset()
+    })
+  })
+
   it('等待异步启动完成后才读取 Robot 和场景快照', async () => {
     const store = useSimulationStore()
     store.resetForProject('project-1')
