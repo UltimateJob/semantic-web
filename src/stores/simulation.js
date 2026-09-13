@@ -551,7 +551,7 @@ export const useSimulationStore = defineStore('simulation', {
           runtime_installation_id: options.runtime_installation_id || '',
           seed: Number(options.seed || 0),
           headless: options.headless !== false,
-          render_backend: options.render_backend || 'egl'
+          render_backend: options.render_backend || 'auto'
         }
       )
       this.instance = response.instance
@@ -679,7 +679,7 @@ export const useSimulationStore = defineStore('simulation', {
         layout: options.layout,
         seed: Number(options.seed || 0),
         headless: options.headless !== false,
-        render_backend: options.render_backend || 'egl'
+        render_backend: options.render_backend || 'auto'
       })
       this.instance = response.instance
       this.record('scene', `场景 ${sceneKey} 启动请求已接受`, response.instance)
