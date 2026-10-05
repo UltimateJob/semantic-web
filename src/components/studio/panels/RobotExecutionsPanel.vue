@@ -95,7 +95,7 @@ aside > header {
   }
   span {
     color: var(--sf-text-disabled);
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 
@@ -127,13 +127,13 @@ aside > button {
   }
 
   b {
-    font-size: 10px;
+    font-size: 11px;
   }
   small {
     overflow: hidden;
     color: var(--sf-text-disabled);
     font-family: ui-monospace, monospace;
-    font-size: 8px;
+    font-size: 10px;
     text-overflow: ellipsis;
   }
 }
@@ -146,7 +146,7 @@ main {
 .empty {
   padding: 25px 12px;
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
   text-align: center;
 }
 </style>

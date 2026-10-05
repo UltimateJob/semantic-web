@@ -22,6 +22,7 @@ const activeStates = new Set([
   'waiting_agent',
   'waiting_input',
   'stopping',
+  'interrupted',
   'cancelling'
 ])
 const terminalStates = new Set(['completed', 'failed', 'stopped', 'cancelled', 'canceled'])
@@ -41,6 +42,13 @@ export function currentProjectWork({
   const inProject = (item) => !item.project_id || item.project_id === projectId
   const projectWorkflows = workflows.filter(inProject)
   const projectExecutions = executions.filter(inProject)
+  // interrupted 历史不能重新占用设备；只有 Pilot 仍指向它时，才保留当前
+  // 停止入口。新请求失败或换会话均不能遮蔽这个权威占用。
+  const ownsInterruptedExecution = (item) =>
+    item.status !== 'interrupted' ||
+    devices.some(
+      (device) => device.robot_id === item.robot_id && device.current_execution_id === item.id
+    )
   // 终态 Workflow 也仍是收尾 Run / Execution 的归属，不能只检查活动父级。
   const workflowIds = new Set(projectWorkflows.map((item) => item.id))
   const activeWorkflowIds = new Set(
@@ -72,7 +80,6 @@ export function currentProjectWork({
       !run.task_id &&
       !run.context_id?.startsWith('workflow-summary:')
   )
-  const runIds = new Set(projectRuns.map((run) => run.id))
   const activeRunIds = new Set(
     projectRuns.filter((run) => activeStates.has(run.status)).map((run) => run.id)
   )
@@ -97,12 +104,13 @@ export function currentProjectWork({
       .filter(
         (item) =>
           matchesRobot(item) &&
+          ownsInterruptedExecution(item) &&
           !(activeStates.has(item.status) ? activeWorkflowIds : workflowIds).has(
             item.workflow_id ||
               taskWorkflowIds.get(item.task_id) ||
               byRunId.get(item.run_id)?.workflow_id
           ) &&
-          !(activeStates.has(item.status) ? activeRunIds : runIds).has(item.run_id)
+          (item.status === 'interrupted' || !activeRunIds.has(item.run_id))
       )
       .sort(newestFirst)
       .map((value) => ({ kind: 'execution', value })),
@@ -112,7 +120,16 @@ export function currentProjectWork({
       .map((value) => ({ kind: 'run', value }))
   ]
   const items = topLevel.filter((item) => activeStates.has(item.value.status))
-  const terminal = topLevel.filter((item) => terminalStates.has(item.value.status))
+  const terminalExecutions = topLevel.filter(
+    (item) => item.kind === 'execution' && terminalStates.has(item.value.status)
+  )
+  // Agent 完成下发请求与 Skill 完成操作是两个终态。同一请求已有实际执行
+  // 结果时，展示它的 stopped / failed / completed，避免“请求已完成”掩盖停止。
+  const terminal = topLevel.filter(
+    (item) =>
+      terminalStates.has(item.value.status) &&
+      (item.kind !== 'run' || !terminalExecutions.some((e) => e.value.run_id === item.value.id))
+  )
   // 普通问答的结束不抹掉最近业务结果；新的 Workflow / 技能 / Robot 请求会更新结果。
   const businessResults = terminal.filter((item) => item.kind !== 'run' || item.value.robot_id)
   return {

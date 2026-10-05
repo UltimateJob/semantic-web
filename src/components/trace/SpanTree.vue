@@ -31,7 +31,9 @@ limitations under the License.
       <el-tag size="small" effect="plain" class="kind-tag" :type="kindTagType(span.kind)">
         {{ span.kind || 'unknown' }}
       </el-tag>
-      <span class="span-name" :title="span.name">{{ span.name }}</span>
+      <el-tooltip :content="span.name" effect="dark" :show-after="500" placement="top">
+        <span class="span-name">{{ span.name }}</span>
+      </el-tooltip>
       <span class="span-bar">
         <span
           class="span-bar-fill"

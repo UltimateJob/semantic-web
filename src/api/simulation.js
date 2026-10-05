@@ -19,6 +19,9 @@ import request from './request'
 const root = (projectId) => `/projects/${encodeURIComponent(projectId)}/simulation`
 
 export const listRuntimeInstallations = () => request.get('/simulation/runtime-installations')
+export const reloadRuntimeResources = () => request.post('/simulation/runtime-installations/reload')
+export const uninstallRuntime = (id) =>
+  request.delete(`/simulation/runtime-installations/${encodeURIComponent(id)}`)
 
 export const probeRuntimeInstallation = (installationId) =>
   request.post(`/simulation/runtime-installations/${encodeURIComponent(installationId)}/probe`)
@@ -48,7 +51,8 @@ export const setProjectRuntimePreference = (projectId, runtimeProfileId, install
     preferred_runtime_installation_id: installationId
   })
 
-export const ensureProjectRuntime = (projectId) => request.post(`${root(projectId)}/runtime/ensure`)
+export const ensureProjectRuntime = (projectId) =>
+  request.post(`${root(projectId)}/runtime/ensure`, undefined, { timeout: 120_000 })
 
 export const recoverInterruptedRuntime = (projectId, instanceId) =>
   request.post(`${root(projectId)}/runtime/recover-interrupted`, {
@@ -59,6 +63,8 @@ export const releaseProjectRuntime = (projectId) =>
   request.post(`${root(projectId)}/runtime/release`)
 
 export const listProjectScenes = (projectId) => request.get(`${root(projectId)}/project-scenes`)
+export const removeProjectScene = (projectId, referenceId) =>
+  request.delete(`${root(projectId)}/project-scenes/${encodeURIComponent(referenceId)}`)
 
 export const addProjectScene = (projectId, payload) =>
   request.post(`${root(projectId)}/project-scenes`, payload)
@@ -81,7 +87,8 @@ export const startProjectScene = (projectId, projectSceneId, payload) =>
 export const switchProjectSceneVariant = (projectId, instanceId, payload) =>
   request.post(
     `${root(projectId)}/instances/${encodeURIComponent(instanceId)}/switch-variant`,
-    payload
+    payload,
+    { timeout: 120_000 }
   )
 
 export const getProjectStudioSnapshot = (projectId) =>
@@ -91,13 +98,17 @@ export const listRuntimeProfiles = (projectId) => request.get(`${root(projectId)
 
 export const ensureRuntime = (projectId, profileId) =>
   request.post(
-    `${root(projectId)}/runtime/ensure?runtime_profile_id=${encodeURIComponent(profileId)}`
+    `${root(projectId)}/runtime/ensure?runtime_profile_id=${encodeURIComponent(profileId)}`,
+    undefined,
+    { timeout: 120_000 }
   )
 export const getSimulationSnapshot = (projectId) => request.get(`${root(projectId)}/snapshot`)
 export const listScenes = (projectId) => request.get(`${root(projectId)}/scenes`)
 
 export const startScene = (projectId, sceneKey, payload) =>
-  request.post(`${root(projectId)}/scenes/${encodeURIComponent(sceneKey)}/instances`, payload)
+  request.post(`${root(projectId)}/scenes/${encodeURIComponent(sceneKey)}/instances`, payload, {
+    timeout: 120_000
+  })
 
 export const getSceneInstance = (projectId, instanceId) =>
   request.get(`${root(projectId)}/instances/${encodeURIComponent(instanceId)}`)
@@ -105,7 +116,9 @@ export const getSceneInstance = (projectId, instanceId) =>
 export const operateScene = (projectId, instanceId, operation, payload = undefined) =>
   request.post(
     `${root(projectId)}/instances/${encodeURIComponent(instanceId)}/${operation}`,
-    payload
+    payload,
+    // 原生 reset/stop 可能清理较大场景；快速读取与暂停/继续保留默认预算。
+    ['reset', 'stop'].includes(operation) ? { timeout: 120_000 } : undefined
   )
 
 export const getSceneSnapshot = (projectId, instanceId) =>

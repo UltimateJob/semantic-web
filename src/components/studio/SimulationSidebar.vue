@@ -262,7 +262,7 @@ function formatTime(value) {
 .runtime-card {
   padding: 12px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 9px;
+  border-radius: 8px;
   background: var(--sf-bg-tertiary);
 }
 .runtime-card header,
@@ -285,7 +285,7 @@ function formatTime(value) {
 .empty-note,
 .runtime-card p {
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 }
 .sidebar-section {
   margin-top: 18px;
@@ -293,14 +293,14 @@ function formatTime(value) {
 .sidebar-section h3 {
   margin: 0 4px 8px;
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 }
 .nav-row {
   width: 100%;
   min-height: 42px;
   padding: 7px;
   border: 0;
-  border-radius: 7px;
+  border-radius: 6px;
   background: transparent;
   color: var(--sf-text-secondary);
   text-align: left;

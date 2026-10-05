@@ -42,15 +42,15 @@ limitations under the License.
           </span>
           <span v-else-if="message.status === 'cancelled'" class="row-cancelled">已中断</span>
           <span v-else-if="message.usage" class="row-usage">{{ usageText }}</span>
-          <span
+          <el-tooltip
             v-if="traceable"
-            class="row-trace"
-            :class="{ 'is-busy': tracing }"
-            title="查看本轮运行的链路追踪"
-            @click="onTrace"
+            content="查看本轮运行的链路追踪"
+            effect="dark"
+            :show-after="500"
+            placement="top"
           >
-            追踪
-          </span>
+            <span class="row-trace" :class="{ 'is-busy': tracing }" @click="onTrace"> 追踪 </span>
+          </el-tooltip>
         </div>
         <details
           v-for="round in message.reasoningRounds?.length
@@ -326,7 +326,7 @@ const usageText = computed(() => {
   background: color-mix(in srgb, var(--row-color) 13%, var(--sf-bg-secondary));
   color: var(--row-color);
   font-size: var(--sf-font-xs);
-  font-weight: 750;
+  font-weight: 380;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--row-color) 20%, transparent);
 }
 
@@ -345,7 +345,7 @@ const usageText = computed(() => {
 .row-badge {
   border: none;
   font-size: var(--sf-font-xs);
-  font-weight: 650;
+  font-weight: 520;
   line-height: 20px;
 }
 

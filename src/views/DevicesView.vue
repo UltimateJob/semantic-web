@@ -251,8 +251,8 @@ onBeforeUnmount(() => subscription?.stop())
 }
 .eyebrow {
   color: var(--sf-role-robot);
-  font-size: 9px;
-  font-weight: 800;
+  font-size: 11px;
+  font-weight: 380;
   letter-spacing: 0.12em;
 }
 h1 {
@@ -269,10 +269,10 @@ h1 {
   align-items: center;
   gap: 11px;
   padding: 9px 12px;
-  border: 1px solid var(--sf-border-light);
-  border-radius: 9px;
+  border: 0;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
-  font-size: 10px;
+  font-size: 11px;
 }
 .header-actions {
   display: flex;
@@ -289,8 +289,8 @@ h1 {
 .metrics div {
   display: flex;
   padding: 14px;
-  border: 1px solid var(--sf-border-light);
-  border-radius: 10px;
+  border: 0;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
   flex-direction: column;
   gap: 4px;
@@ -299,7 +299,7 @@ h1 {
 .metrics span,
 .metrics small {
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
 }
 .metrics b {
   font-size: 19px;
@@ -314,15 +314,15 @@ h1 {
 }
 .toolbar > span {
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
   text-align: right;
 }
 .device-table {
   max-width: 1480px;
   margin: auto;
   overflow: hidden;
-  border: 1px solid var(--sf-border-light);
-  border-radius: 11px;
+  border: 0;
+  border-radius: 12px;
   background: var(--sf-bg-secondary);
   box-shadow: var(--sf-shadow-sm);
 }
@@ -344,8 +344,8 @@ h1 {
   min-height: 36px;
   background: var(--sf-bg-tertiary);
   color: var(--sf-text-disabled);
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 520;
 }
 .device-table > button {
   width: 100%;
@@ -365,7 +365,7 @@ h1 {
   width: 34px;
   height: 34px;
   flex: none;
-  border-radius: 9px;
+  border-radius: 8px;
   background: var(--sf-brand-soft);
   color: var(--sf-brand);
   place-items: center;
@@ -396,7 +396,7 @@ h1 {
   overflow: hidden;
   color: var(--sf-text-disabled);
   font-family: ui-monospace, monospace;
-  font-size: 9px;
+  font-size: 11px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -421,7 +421,7 @@ h1 {
   border-radius: 8px;
   background: var(--sf-bg-secondary);
   color: var(--sf-warning);
-  font-size: 10px;
+  font-size: 11px;
   box-shadow: var(--sf-shadow-md);
 }
 @media (max-width: 1100px) {

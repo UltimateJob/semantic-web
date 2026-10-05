@@ -147,7 +147,7 @@ async function approve() {
   width: 34px;
   height: 34px;
   place-items: center;
-  border-radius: 9px;
+  border-radius: 8px;
   background: var(--sf-brand-soft);
   color: var(--sf-brand);
 }
@@ -160,8 +160,8 @@ async function approve() {
 
   > span {
     color: var(--sf-brand);
-    font-size: 9px;
-    font-weight: 750;
+    font-size: 11px;
+    font-weight: 380;
     letter-spacing: 0.08em;
   }
 

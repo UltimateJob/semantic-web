@@ -56,7 +56,7 @@ const store = useSimulationStore()
 }
 .sensor-panel header span {
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 }
 .sensor-panel :deep(.camera-wall) {
   min-height: 0;

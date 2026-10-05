@@ -190,7 +190,9 @@ function returnLabel(task) {
 
 <style scoped lang="scss">
 .abilities-panel {
-  padding: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 28px 36px;
   container-type: inline-size;
 }
 .abilities-panel > header {
@@ -302,7 +304,7 @@ main {
 .eyebrow {
   color: var(--sf-role-robot);
   font-size: var(--sf-font-xs);
-  font-weight: 800;
+  font-weight: 520;
   letter-spacing: 0.1em;
 }
 .ability-heading h3 {

@@ -21,13 +21,16 @@ limitations under the License.
   <div class="trace-summary">
     <div class="breakdown">
       <div class="breakdown-bar">
-        <span
+        <el-tooltip
           v-for="seg in segments"
           :key="seg.key"
-          class="seg"
-          :style="{ width: `${seg.ratio * 100}%`, background: seg.color }"
-          :title="`${seg.label} ${formatDuration(seg.ms)}`"
-        />
+          :content="`${seg.label} ${formatDuration(seg.ms)}`"
+          effect="dark"
+          :show-after="500"
+          placement="top"
+        >
+          <span class="seg" :style="{ width: `${seg.ratio * 100}%`, background: seg.color }" />
+        </el-tooltip>
         <span v-if="totalMs === 0" class="seg-empty">无耗时数据</span>
       </div>
       <ul class="breakdown-legend">

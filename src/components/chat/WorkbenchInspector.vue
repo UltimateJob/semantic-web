@@ -715,7 +715,7 @@ async function confirmAndSaveSessionModel(agentId, endpointId, effort, effortRes
   b {
     overflow: hidden;
     color: var(--sf-text-secondary);
-    font-weight: 500;
+    font-weight: 380;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -774,7 +774,7 @@ async function confirmAndSaveSessionModel(agentId, endpointId, effort, effortRes
   background: color-mix(in srgb, var(--agent-color) 14%, transparent);
   color: var(--agent-color);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 380;
 }
 
 .agent-copy {

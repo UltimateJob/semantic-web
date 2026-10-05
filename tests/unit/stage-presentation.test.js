@@ -29,6 +29,8 @@ describe('stage presentation and debug inputs', () => {
   })
   it('uses semantic labels without guessing capture time', () => {
     expect(stageTitle({ name: 'approach' })).toBe('接近')
+    expect(stageTitle({ name: 'execute_policy' })).toBe('执行策略')
+    expect(stageTitle({ name: 'verify_result' })).toBe('验收结果')
     expect(evidenceTitle({ stage: 'approach', capture_point: 'entry' })).toBe('接近阶段执行前图像')
     expect(evidenceTitle({ stage: 'approach', capture_point: 'exit' })).toBe('接近阶段完成后图像')
     expect(evidenceTitle({ stage: 'approach' })).toBe('接近阶段图像')

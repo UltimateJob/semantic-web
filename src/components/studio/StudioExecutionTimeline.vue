@@ -313,7 +313,7 @@ h4 {
 .eyebrow {
   color: var(--sf-role-robot);
   font-size: var(--sf-font-xs);
-  font-weight: 800;
+  font-weight: 380;
   letter-spacing: 0.11em;
 }
 .heading-actions {
@@ -335,7 +335,7 @@ h4 {
   min-width: 130px;
   gap: 2px;
   padding: 7px 10px;
-  border-radius: 7px;
+  border-radius: 6px;
   background: var(--sf-bg-tertiary);
 }
 .execution-scope > span.active {
@@ -386,7 +386,7 @@ h4 {
   color: var(--sf-text-primary);
   font-family: ui-monospace, monospace;
   font-size: var(--sf-font-xs);
-  font-weight: 700;
+  font-weight: 380;
 }
 .time-axis small {
   color: var(--sf-text-disabled);
@@ -442,7 +442,7 @@ h4 {
   gap: 10px;
   padding: 13px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   outline: none;
   background: var(--sf-bg-secondary);
@@ -477,7 +477,7 @@ h4 {
   gap: 6px 8px;
   margin: 0;
   padding: 10px;
-  border-radius: 7px;
+  border-radius: 6px;
   background: var(--sf-bg-tertiary);
   font-size: var(--sf-font-xs);
 }
@@ -508,7 +508,7 @@ h4 {
   gap: 4px;
   margin-top: 6px;
   padding: 8px;
-  border-radius: 7px;
+  border-radius: 6px;
   background: var(--sf-bg-tertiary);
   font-size: var(--sf-font-xs);
 }

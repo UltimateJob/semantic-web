@@ -137,7 +137,7 @@ function reload() {
     span {
       flex: 1;
       color: var(--sf-text-disabled);
-      font-size: 10px;
+      font-size: 11px;
     }
   }
 }
@@ -149,7 +149,7 @@ function reload() {
   border-left: 0;
   background: transparent;
   color: var(--sf-text-secondary);
-  font-size: 10px;
+  font-size: 11px;
   cursor: pointer;
   text-align: left;
 

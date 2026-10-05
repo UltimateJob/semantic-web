@@ -18,10 +18,12 @@ limitations under the License.
 <template>
   <article class="task-waiting-card">
     <i class="sf-status-dot" data-status="warning" />
-    <div class="waiting-copy" :title="view.reason">
-      <b>{{ view.title }}</b>
-      <span>{{ view.activity }}</span>
-    </div>
+    <el-tooltip :content="view.reason" effect="dark" :show-after="500" placement="top">
+      <div class="waiting-copy">
+        <b>{{ view.title }}</b>
+        <span>{{ view.activity }}</span>
+      </div>
+    </el-tooltip>
     <div v-if="view.actions?.length" class="waiting-actions">
       <el-button
         v-for="action in view.actions"
@@ -50,7 +52,7 @@ defineEmits(['action'])
   gap: 10px;
   padding: 8px 10px;
   border: 1px solid color-mix(in srgb, var(--sf-warning) 35%, var(--sf-border-light));
-  border-radius: 10px;
+  border-radius: 8px;
   background: color-mix(in srgb, var(--sf-warning) 7%, var(--sf-bg-secondary));
 }
 
@@ -69,7 +71,7 @@ defineEmits(['action'])
   span {
     overflow: hidden;
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
     text-overflow: ellipsis;
     white-space: nowrap;
   }

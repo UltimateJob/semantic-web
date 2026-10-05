@@ -244,7 +244,7 @@ const observationKey = (item) =>
   font-size: 11px;
 }
 .time-grid b {
-  font-size: 12px;
+  font-size: 11px;
 }
 .detail-card {
   padding: 11px;
@@ -270,10 +270,10 @@ const observationKey = (item) =>
 .detail-card > header > span {
   min-width: 20px;
   padding: 1px 5px;
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
   text-align: center;
 }
 .detail-card dl {
@@ -281,7 +281,7 @@ const observationKey = (item) =>
   grid-template-columns: 42px minmax(0, 1fr);
   gap: 7px;
   margin: 0;
-  font-size: 12px;
+  font-size: 11px;
 }
 .detail-card dt {
   color: var(--sf-text-disabled);
@@ -308,10 +308,10 @@ const observationKey = (item) =>
 }
 .telemetry-grid span {
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
 }
 .telemetry-grid b {
-  font-size: 10px;
+  font-size: 11px;
 }
 .telemetry-grid div.alert b {
   color: var(--sf-danger);
@@ -324,7 +324,7 @@ const observationKey = (item) =>
   padding: 8px;
   border-radius: var(--sf-radius-md);
   background: var(--sf-bg-secondary);
-  font-size: 9px;
+  font-size: 11px;
 }
 .signal.feedback {
   border-left: 3px solid var(--sf-brand);
@@ -381,7 +381,7 @@ const observationKey = (item) =>
   margin: 0;
   padding: 10px 3px 2px;
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
   text-align: center;
 }
 .execution-link {

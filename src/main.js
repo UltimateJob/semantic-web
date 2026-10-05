@@ -25,6 +25,9 @@ import 'dockview-vue/dist/styles/dockview.css'
 import App from './App.vue'
 import router from './router'
 import '@/styles/index.scss'
+import '@/styles/floating-popper.scss'
+import '@/styles/element-override.scss'
+import '@/styles/reset.scss'
 
 const app = createApp(App)
 const pinia = createPinia()

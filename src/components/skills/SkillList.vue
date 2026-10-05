@@ -19,21 +19,28 @@ limitations under the License.
   <div class="skill-list">
     <div v-for="group in groups" :key="group.category" class="skill-group">
       <div class="group-title">{{ group.category }}</div>
-      <button
+      <el-tooltip
         v-for="sk in group.items"
         :key="sk.catalog_id || sk.name"
-        type="button"
-        class="skill-item"
-        :class="{ 'is-active': (sk.catalog_id || sk.name) === (activeId || activeName) }"
-        :title="sk.description"
-        @click="$emit('select', sk.catalog_id || sk.name)"
+        :content="sk.description"
+        :disabled="!sk.description"
+        effect="dark"
+        :show-after="500"
+        placement="right"
       >
-        <span class="skill-name">
-          {{ sk.name }}
-          <em v-if="sk.skill_kind === 'robot'">Robot</em>
-        </span>
-        <span class="skill-desc">{{ sk.description }}</span>
-      </button>
+        <button
+          type="button"
+          class="skill-item"
+          :class="{ 'is-active': (sk.catalog_id || sk.name) === (activeId || activeName) }"
+          @click="$emit('select', sk.catalog_id || sk.name)"
+        >
+          <span class="skill-name">
+            {{ sk.name }}
+            <em v-if="sk.skill_kind === 'robot'">Robot</em>
+          </span>
+          <span class="skill-desc">{{ sk.description }}</span>
+        </button>
+      </el-tooltip>
     </div>
   </div>
 </template>
@@ -93,7 +100,7 @@ defineEmits(['select'])
 
 .skill-name {
   font-size: var(--sf-font-md);
-  font-weight: 600;
+  font-weight: 520;
   color: var(--sf-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;

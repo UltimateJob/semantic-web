@@ -132,7 +132,7 @@ onBeforeUnmount(unregisterGuard)
   span,
   small {
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
   }
 
   > footer {

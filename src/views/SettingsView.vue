@@ -87,7 +87,14 @@ limitations under the License.
                 >
                   <div class="preset-title">
                     <strong>{{ preset.shortLabel }}</strong>
-                    <i v-if="isServiceConnected(preset.id)" title="Token 已配置" />
+                    <el-tooltip
+                      content="Token 已配置"
+                      effect="dark"
+                      :show-after="500"
+                      placement="top"
+                    >
+                      <i v-if="isServiceConnected(preset.id)" />
+                    </el-tooltip>
                   </div>
                   <span>{{
                     isServiceConnected(preset.id)
@@ -461,7 +468,7 @@ function formatSection(data) {
   gap: 24px;
   margin-bottom: 14px;
   padding: 18px 20px;
-  border: 1px solid var(--sf-border-light);
+  border: 0;
   border-left: 3px solid var(--sf-brand);
   border-radius: var(--sf-radius-l);
   background: var(--sf-bg-secondary);
@@ -471,8 +478,8 @@ function formatSection(data) {
 .eyebrow {
   margin: 0 0 5px;
   color: var(--sf-brand);
-  font-size: 10px;
-  font-weight: 750;
+  font-size: 11px;
+  font-weight: 380;
   letter-spacing: 0.12em;
 }
 
@@ -507,7 +514,7 @@ function formatSection(data) {
 
 .settings-nav,
 .settings-content {
-  border: 1px solid var(--sf-border-light);
+  border: 0;
   border-radius: var(--sf-radius-l);
   background: var(--sf-bg-secondary);
   box-shadow: var(--sf-shadow-sm);
@@ -525,7 +532,7 @@ function formatSection(data) {
     margin-bottom: 6px;
     padding: 11px 12px;
     border: 1px solid transparent;
-    border-radius: 9px;
+    border-radius: 8px;
     background: transparent;
     color: var(--sf-text-primary);
     text-align: left;
@@ -552,7 +559,7 @@ function formatSection(data) {
   padding: 6px 10px 12px;
   color: var(--sf-text-secondary);
   font-size: var(--sf-font-xs);
-  font-weight: 650;
+  font-weight: 520;
 }
 
 .settings-content {
@@ -571,8 +578,8 @@ function formatSection(data) {
   gap: 4px 10px;
   margin-bottom: 14px;
   padding: 9px 11px;
-  border: 1px solid var(--sf-border-light);
-  border-radius: 9px;
+  border: 0;
+  border-radius: 8px;
   background: var(--sf-bg-primary);
   color: var(--sf-text-secondary);
   font-size: var(--sf-font-xs);
@@ -587,7 +594,7 @@ function formatSection(data) {
   small {
     grid-column: 2;
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
@@ -650,7 +657,7 @@ function formatSection(data) {
   gap: 5px;
   padding: 11px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 9px;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
   color: var(--sf-text-primary);
   text-align: left;
@@ -658,7 +665,7 @@ function formatSection(data) {
 
   span {
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
   }
 
   &.is-connected {
@@ -711,7 +718,7 @@ function formatSection(data) {
 .field-help {
   margin-top: 5px;
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.4;
 }
 
@@ -725,7 +732,7 @@ function formatSection(data) {
   span {
     margin-right: 8px;
     color: var(--sf-info);
-    font-weight: 650;
+    font-weight: 380;
   }
 }
 
@@ -773,7 +780,7 @@ function formatSection(data) {
 .service-group {
   padding: 13px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
 }
 
@@ -813,7 +820,7 @@ function formatSection(data) {
 .general-grid article {
   padding: 13px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 9px;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
 }
 

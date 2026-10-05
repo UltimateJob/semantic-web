@@ -63,6 +63,6 @@ defineProps({
   background: var(--sf-bg-tertiary);
   color: var(--sf-brand);
   font-size: 11px;
-  font-weight: 650;
+  font-weight: 520;
 }
 </style>

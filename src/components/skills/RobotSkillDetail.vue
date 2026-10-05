@@ -346,7 +346,7 @@ async function uninstall(robot) {
 .detail-kicker {
   color: var(--sf-role-robot);
   font-size: var(--sf-font-xs);
-  font-weight: 800;
+  font-weight: 520;
   letter-spacing: 0.12em;
 }
 .header-tags,

@@ -21,16 +21,17 @@ limitations under the License.
       <header class="side-list-header">
         <span class="side-list-title"><slot name="title" /></span>
         <span class="side-list-actions"><slot name="actions" /></span>
-        <button
-          v-if="collapsible"
-          type="button"
-          class="side-list-toggle"
-          title="收起列表"
-          aria-label="收起列表"
-          @click="collapsed = true"
-        >
-          <el-icon><Fold /></el-icon>
-        </button>
+        <el-tooltip content="收起列表" effect="dark" :show-after="500" placement="bottom">
+          <button
+            v-if="collapsible"
+            type="button"
+            class="side-list-toggle"
+            aria-label="收起列表"
+            @click="collapsed = true"
+          >
+            <el-icon><Fold /></el-icon>
+          </button>
+        </el-tooltip>
       </header>
       <div v-if="$slots.search" class="side-list-search">
         <slot name="search" />
@@ -42,16 +43,16 @@ limitations under the License.
         <slot name="footer" />
       </footer>
     </template>
-    <button
-      v-else
-      type="button"
-      class="side-list-toggle expand-rail"
-      title="展开列表"
-      aria-label="展开列表"
-      @click="collapsed = false"
-    >
-      <el-icon><Expand /></el-icon>
-    </button>
+    <el-tooltip v-else content="展开列表" effect="dark" :show-after="500" placement="right">
+      <button
+        type="button"
+        class="side-list-toggle expand-rail"
+        aria-label="展开列表"
+        @click="collapsed = false"
+      >
+        <el-icon><Expand /></el-icon>
+      </button>
+    </el-tooltip>
   </aside>
 </template>
 
@@ -110,7 +111,7 @@ const asideStyle = computed(() => {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: var(--sf-font-md);
-  font-weight: 600;
+  font-weight: 520;
   color: var(--sf-text-primary);
 }
 

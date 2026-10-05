@@ -199,7 +199,7 @@ watch(robotId, loadDevice, { immediate: true })
   display: grid;
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--sf-brand-soft);
   color: var(--sf-brand);
   place-items: center;
@@ -209,8 +209,8 @@ watch(robotId, loadDevice, { immediate: true })
 }
 .identity span {
   color: var(--sf-role-robot);
-  font-size: 9px;
-  font-weight: 800;
+  font-size: 11px;
+  font-weight: 380;
   letter-spacing: 0.1em;
 }
 .identity h2 {
@@ -221,7 +221,7 @@ watch(robotId, loadDevice, { immediate: true })
   margin: 0;
   color: var(--sf-text-disabled);
   font-family: ui-monospace, monospace;
-  font-size: 9px;
+  font-size: 11px;
 }
 .device-tabs {
   display: flex;
@@ -253,7 +253,7 @@ watch(robotId, loadDevice, { immediate: true })
   padding: 1px 5px;
   border-radius: 8px;
   background: var(--sf-bg-tertiary);
-  font-size: 9px;
+  font-size: 11px;
   font-style: normal;
 }
 .device-content {
@@ -278,14 +278,14 @@ watch(robotId, loadDevice, { immediate: true })
   gap: 6px;
   padding: 13px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
   flex-direction: column;
 }
 .overview-grid span,
 .overview-grid small {
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
 }
 .overview-grid b {
   overflow: hidden;
@@ -299,7 +299,7 @@ watch(robotId, loadDevice, { immediate: true })
   margin-top: 14px;
   padding: 13px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--sf-bg-secondary);
 }
 .boundary-note svg {
@@ -312,7 +312,7 @@ watch(robotId, loadDevice, { immediate: true })
 .boundary-note p {
   margin: 4px 0 0;
   color: var(--sf-text-secondary);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
 }
 .history {
@@ -344,7 +344,7 @@ watch(robotId, loadDevice, { immediate: true })
   overflow: hidden;
   color: var(--sf-text-disabled);
   font-family: ui-monospace, monospace;
-  font-size: 9px;
+  font-size: 11px;
   text-overflow: ellipsis;
 }
 .empty {

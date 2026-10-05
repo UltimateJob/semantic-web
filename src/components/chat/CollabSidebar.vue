@@ -30,8 +30,27 @@ limitations under the License.
       </div>
       <div v-for="a in agents.agents" :key="a.id" class="member-row">
         <i class="role-dot" :style="{ background: roleColor(a.role) }" />
-        <span class="member-name" :title="`${a.role} / ${a.mode}`">{{ a.id }}</span>
-        <span class="member-status" :title="a.activity || ''">
+        <el-tooltip
+          :content="`${a.role} / ${a.mode}`"
+          effect="dark"
+          :show-after="500"
+          placement="top"
+        >
+          <span class="member-name">{{ a.id }}</span>
+        </el-tooltip>
+        <el-tooltip
+          v-if="a.activity"
+          :content="a.activity"
+          effect="dark"
+          :show-after="500"
+          placement="top"
+        >
+          <span class="member-status">
+            <i class="status-dot" :style="{ background: statusMetaOf(a.status).color }" />
+            {{ statusMetaOf(a.status).label }}
+          </span>
+        </el-tooltip>
+        <span v-else class="member-status">
           <i class="status-dot" :style="{ background: statusMetaOf(a.status).color }" />
           {{ statusMetaOf(a.status).label }}
         </span>
@@ -50,7 +69,9 @@ limitations under the License.
           <span class="alert-agent">{{ al.agentName }}</span>
           <span class="alert-time">{{ formatTime(al.ts) }}</span>
         </div>
-        <div class="alert-text" :title="al.text">{{ al.text }}</div>
+        <el-tooltip :content="al.text" effect="dark" :show-after="500" placement="top">
+          <div class="alert-text">{{ al.text }}</div>
+        </el-tooltip>
       </div>
     </div>
   </aside>

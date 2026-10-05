@@ -65,7 +65,14 @@ limitations under the License.
           </div>
           <!-- 扩展字段透传（frontmatter 标准键以外的键，服务端原样输出） -->
           <div v-for="key in extensionKeys" :key="key" class="field-row">
-            <span class="field-label" :title="`扩展字段 ${key}`">{{ key }}</span>
+            <el-tooltip
+              :content="`扩展字段 ${key}`"
+              effect="dark"
+              :show-after="500"
+              placement="top"
+            >
+              <span class="field-label">{{ key }}</span>
+            </el-tooltip>
             <pre class="field-value field-pre">{{ formatExtension(skill.extensions[key]) }}</pre>
           </div>
         </div>
@@ -210,7 +217,7 @@ function formatExtension(value) {
 .detail-kicker {
   color: var(--sf-brand);
   font-size: 9px;
-  font-weight: 750;
+  font-weight: 520;
   letter-spacing: 0.12em;
 }
 

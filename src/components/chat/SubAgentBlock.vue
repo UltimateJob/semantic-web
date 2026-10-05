@@ -25,25 +25,35 @@ limitations under the License.
   <div class="subagent-block" :class="`is-${delegation.status}`">
     <div class="block-bar" :style="{ background: accentColor }" />
     <div class="block-main">
-      <button
-        type="button"
-        class="block-head"
-        :title="isRunning ? '委派执行中' : expanded ? '收起结果' : '展开结果'"
-        @click="onToggle"
+      <el-tooltip
+        :content="isRunning ? '委派执行中' : expanded ? '收起结果' : '展开结果'"
+        effect="dark"
+        :show-after="500"
+        placement="top"
       >
-        <el-icon class="status-icon" :class="{ 'is-loading': isRunning }">
-          <Loading v-if="isRunning" />
-          <CircleCheckFilled v-else />
-        </el-icon>
-        <span class="head-route" :style="{ color: accentColor }">
-          Leader → {{ delegation.agentName }}
-        </span>
-        <span class="head-task" :title="delegation.task">{{ taskSummary }}</span>
-        <span class="head-time">{{ timeText }}</span>
-        <el-icon v-if="!isRunning" class="head-arrow" :class="{ expanded }">
-          <ArrowDown />
-        </el-icon>
-      </button>
+        <button type="button" class="block-head" @click="onToggle">
+          <el-icon class="status-icon" :class="{ 'is-loading': isRunning }">
+            <Loading v-if="isRunning" />
+            <CircleCheckFilled v-else />
+          </el-icon>
+          <span class="head-route" :style="{ color: accentColor }">
+            Leader → {{ delegation.agentName }}
+          </span>
+          <el-tooltip
+            :content="delegation.task"
+            :disabled="!delegation.task"
+            effect="dark"
+            :show-after="500"
+            placement="top"
+          >
+            <span class="head-task">{{ taskSummary }}</span>
+          </el-tooltip>
+          <span class="head-time">{{ timeText }}</span>
+          <el-icon v-if="!isRunning" class="head-arrow" :class="{ expanded }">
+            <ArrowDown />
+          </el-icon>
+        </button>
+      </el-tooltip>
       <div v-if="bodyVisible" class="block-body">
         <div class="subagent-content">
           <div v-if="delegation.tools?.length" class="subagent-tools">
@@ -167,7 +177,7 @@ const timeText = computed(() => {
 
 .head-route {
   flex: none;
-  font-weight: 600;
+  font-weight: 520;
 }
 
 .head-task {

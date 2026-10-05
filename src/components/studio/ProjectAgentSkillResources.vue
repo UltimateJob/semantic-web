@@ -249,14 +249,14 @@ watch(
 
   span {
     color: var(--sf-text-disabled);
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 
 .section-description {
   margin: 6px 0 10px;
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.5;
 }
 
@@ -307,14 +307,14 @@ watch(
 
   small {
     color: var(--sf-text-disabled);
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 
 .resource-state {
   padding: 14px 8px;
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 
   &.error {
     color: var(--sf-danger);

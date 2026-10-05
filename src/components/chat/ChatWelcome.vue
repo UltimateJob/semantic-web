@@ -80,14 +80,14 @@ const scenarios = [
   span {
     color: var(--sf-brand);
     font-size: 10px;
-    font-weight: 750;
+    font-weight: 380;
     letter-spacing: 0.14em;
   }
   h2 {
     margin: 8px 0;
     color: var(--sf-text-primary);
     font-size: 24px;
-    font-weight: 650;
+    font-weight: 630;
   }
   p {
     margin: 0;

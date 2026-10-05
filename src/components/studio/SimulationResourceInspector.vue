@@ -33,7 +33,9 @@ limitations under the License.
           <span>{{ node.name || node.id }}</span>
           <small>
             {{ node.kind }}
-            <Lock v-if="editorContext.locked_node_ids.includes(node.id)" title="模板锁定" />
+            <el-tooltip content="模板锁定" effect="dark" :show-after="500" placement="top">
+              <Lock v-if="editorContext.locked_node_ids.includes(node.id)" />
+            </el-tooltip>
           </small>
         </button>
       </div>
@@ -49,7 +51,9 @@ limitations under the License.
       <dl :class="{ 'object-property-grid': selectedType === 'simulation_object' }">
         <div v-for="item in properties" :key="item.label" class="property-field">
           <dt>{{ item.label }}</dt>
-          <dd :title="item.value || '—'">{{ item.value || '—' }}</dd>
+          <el-tooltip :content="item.value || '—'" effect="dark" :show-after="500" placement="top">
+            <dd>{{ item.value || '—' }}</dd>
+          </el-tooltip>
         </div>
       </dl>
     </section>
@@ -245,7 +249,7 @@ function selectEditorNode(node) {
 }
 .scene-tree-section > header span {
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 }
 .scene-tree {
   display: grid;
@@ -295,7 +299,7 @@ function selectEditorNode(node) {
 .section-hint {
   margin: -7px 0 12px;
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
 }
 .simulation-inspector dl {
@@ -311,7 +315,7 @@ function selectEditorNode(node) {
 }
 .simulation-inspector dt {
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 }
 .simulation-inspector dd {
   min-width: 0;
@@ -327,7 +331,7 @@ function selectEditorNode(node) {
   display: block;
   padding: 9px 10px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 7px;
+  border-radius: 6px;
   background: var(--sf-bg-tertiary);
 }
 .object-property-grid .property-field:first-child,
@@ -337,7 +341,7 @@ function selectEditorNode(node) {
 .object-property-grid dt {
   margin-bottom: 5px;
   color: var(--sf-text-disabled);
-  font-size: 9px;
+  font-size: 11px;
 }
 .object-property-grid dd {
   min-height: 18px;

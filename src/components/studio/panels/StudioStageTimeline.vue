@@ -59,6 +59,12 @@ limitations under the License.
           </button>
         </header>
         <p v-if="selectedStage.detailsPending">当前阶段摘要已上报，详细事件待读取。</p>
+        <p
+          v-if="typeof selectedStage.observation === 'string' && selectedStage.observation"
+          class="stage-summary"
+        >
+          {{ selectedStage.observation }}
+        </p>
         <p v-if="selectedStage.deviation" class="deviation">
           <span>偏差</span>{{ selectedStage.deviation }}
         </p>
@@ -124,6 +130,8 @@ const imageState = computed(() => {
   )
   if (records.some((item) => item.status === 'failed'))
     return '本阶段图片同步失败；可在问题查看详情。'
+  if (stageProblems.value.some((item) => item.message === '阶段图像暂不可用'))
+    return '阶段图像导入失败，尚未形成可预览文件。'
   const captured =
     view.value.observations.some((item) => item.kind === 'sensor.frame' || item.type === 'rgb') ||
     [...refs].some((ref) => /^(pilot-artifact|artifact):\/\//.test(ref))

@@ -103,7 +103,7 @@ watch(() => conversation.currentId, select)
   height: 44px;
   flex: none;
   padding: 0 14px;
-  border-bottom: 1px solid var(--sf-border-light);
+  border-bottom: 0;
   background: var(--sf-bg-secondary);
 
   > div:first-child {
@@ -113,7 +113,8 @@ watch(() => conversation.currentId, select)
 
   span {
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 380;
     letter-spacing: 0.03em;
   }
 
@@ -129,6 +130,7 @@ watch(() => conversation.currentId, select)
   gap: 6px;
   color: var(--sf-text-secondary);
   font-size: 11px;
+  font-weight: 380;
 }
 
 .conversation-waiting {

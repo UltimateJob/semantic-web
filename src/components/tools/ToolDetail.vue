@@ -107,7 +107,7 @@ function formatTime(value) {
 .detail-kicker {
   color: var(--sf-brand);
   font-size: 9px;
-  font-weight: 750;
+  font-weight: 520;
   letter-spacing: 0.12em;
 }
 
@@ -157,7 +157,7 @@ function formatTime(value) {
   border-bottom: 1px solid var(--sf-border-light);
   color: var(--sf-text-primary);
   font-size: var(--sf-font-sm);
-  font-weight: 650;
+  font-weight: 520;
 
   span:last-child {
     color: var(--sf-text-disabled);

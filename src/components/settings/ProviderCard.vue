@@ -268,7 +268,7 @@ const keySourceLabel = computed(() => {
 
 .provider-name {
   font-size: var(--sf-font-lg);
-  font-weight: 600;
+  font-weight: 520;
   color: var(--sf-text-primary);
 }
 

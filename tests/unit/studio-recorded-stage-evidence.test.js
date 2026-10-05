@@ -24,6 +24,24 @@ import { recordedPlaceEvidence } from '../fixtures/studioRecordedEvidence'
 beforeEach(() => setActivePinia(createPinia()))
 
 describe('真实记录形状：累计 Stage 引用与拍摄归属', () => {
+  it('VLA 验收失败的空引用保留此前 stage.evidence 上报的图像', () => {
+    const robots = useRobotStore()
+    const id = 'rex-vla-failed'
+    const ref = 'pilot-artifact://pilot/frame-final'
+    robots.upsert({ id, status: 'running', artifact_sync: [{
+      execution_id: id, pilot_instance_id: 'pilot', local_artifact_id: 'frame-final',
+      server_artifact_id: 'image-final', media_type: 'image/jpeg', status: 'synced'
+    }] })
+    for (const [index, type] of ['stage.running', 'stage.evidence', 'stage.failed'].entries())
+      robots.appendExecutionEvent(id, { execution_id: id, sequence: index + 1, type,
+        payload: { stage: 'verify_result', evidence_refs: type === 'stage.evidence' ? [ref] : [] }
+      })
+    const execution = robots.byId(id)
+    expect(execution.stages[0].status).toBe('failed')
+    expect(buildRobotStageView(execution, execution.stages[0]).artifacts)
+      .toMatchObject([{ id: 'image-final' }])
+  })
+
   it('累计2/3/5张只预览各阶段自己的1张，最终空Stage refs仍从两次sensor.frame取图', () => {
     const { execution, events } = recordedPlaceEvidence()
     const robots = useRobotStore()

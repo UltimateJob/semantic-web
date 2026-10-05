@@ -294,8 +294,8 @@ function selectFirstVisibleTool() {
 .eyebrow {
   margin: 0 0 5px;
   color: var(--sf-brand);
-  font-size: 10px;
-  font-weight: 750;
+  font-size: 11px;
+  font-weight: 380;
   letter-spacing: 0.12em;
 }
 

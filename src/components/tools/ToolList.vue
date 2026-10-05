@@ -22,25 +22,32 @@ limitations under the License.
         <span>{{ group.category }}</span>
         <span>{{ group.tools.length }}</span>
       </div>
-      <button
+      <el-tooltip
         v-for="tool in group.tools"
         :key="tool.key"
-        type="button"
-        class="tool-item"
-        :class="{ 'is-active': tool.key === activeKey }"
-        :title="tool.description"
-        @click="$emit('select', tool.key)"
+        :content="tool.description"
+        :disabled="!tool.description"
+        effect="dark"
+        :show-after="500"
+        placement="right"
       >
-        <span class="tool-heading">
-          <span class="tool-name">{{ tool.name }}</span>
-          <i
-            class="health-dot"
-            :class="tool.health === 'unavailable' ? 'is-unavailable' : 'is-healthy'"
-          />
-        </span>
-        <span class="tool-desc">{{ tool.description || '暂无描述' }}</span>
-        <span class="tool-meta">{{ tool.sourceTitle }} · {{ tool.risk || 'low' }}</span>
-      </button>
+        <button
+          type="button"
+          class="tool-item"
+          :class="{ 'is-active': tool.key === activeKey }"
+          @click="$emit('select', tool.key)"
+        >
+          <span class="tool-heading">
+            <span class="tool-name">{{ tool.name }}</span>
+            <i
+              class="health-dot"
+              :class="tool.health === 'unavailable' ? 'is-unavailable' : 'is-healthy'"
+            />
+          </span>
+          <span class="tool-desc">{{ tool.description || '暂无描述' }}</span>
+          <span class="tool-meta">{{ tool.sourceTitle }} · {{ tool.risk || 'low' }}</span>
+        </button>
+      </el-tooltip>
     </div>
     <div v-if="groups.length === 0" class="list-empty">没有符合条件的工具</div>
   </div>
@@ -110,7 +117,7 @@ defineEmits(['select'])
   color: var(--sf-text-primary);
   font-family: 'SFMono-Regular', Consolas, monospace;
   font-size: var(--sf-font-sm);
-  font-weight: 650;
+  font-weight: 520;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

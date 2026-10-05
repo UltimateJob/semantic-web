@@ -22,12 +22,32 @@ limitations under the License.
     @dblclick.stop="keepOpen"
     @auxclick="closeWithMiddleButton"
   >
-    <span v-if="tabMode === 'pinned'" class="pin-marker" title="已置顶">◆</span>
-    <i v-if="dirty" class="dirty-dot" title="有未保存修改" />
-    <span :title="title">{{ title }}</span>
-    <button v-if="!permanent" type="button" title="关闭" aria-label="关闭标签" @click.stop="close">
-      <Close />
-    </button>
+    <el-tooltip
+      v-if="tabMode === 'pinned'"
+      content="已置顶"
+      effect="dark"
+      :show-after="500"
+      placement="bottom"
+    >
+      <span class="pin-marker">◆</span>
+    </el-tooltip>
+    <el-tooltip
+      v-if="dirty"
+      content="有未保存修改"
+      effect="dark"
+      :show-after="500"
+      placement="bottom"
+    >
+      <i class="dirty-dot" />
+    </el-tooltip>
+    <el-tooltip :content="title" effect="dark" :show-after="500" placement="bottom">
+      <span>{{ title }}</span>
+    </el-tooltip>
+    <el-tooltip v-if="!permanent" content="关闭" effect="dark" :show-after="500" placement="bottom">
+      <button type="button" aria-label="关闭标签" @click.stop="close">
+        <Close />
+      </button>
+    </el-tooltip>
   </div>
 </template>
 

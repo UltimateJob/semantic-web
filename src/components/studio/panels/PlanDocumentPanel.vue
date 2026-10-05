@@ -274,8 +274,8 @@ async function discard() {
 .plan-document > header span,
 .todo-section header span {
   color: var(--sf-brand);
-  font-size: 10px;
-  font-weight: 800;
+  font-size: 11px;
+  font-weight: 380;
   letter-spacing: 0.1em;
 }
 
@@ -351,7 +351,7 @@ h1 {
   }
   span {
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
   }
   b {
     color: var(--sf-text-primary);
@@ -403,7 +403,7 @@ h1 {
 .todo-list article small,
 .todo-list article > span {
   color: var(--sf-text-disabled);
-  font-size: 10px;
+  font-size: 11px;
 }
 .plan-document > footer {
   align-items: center;

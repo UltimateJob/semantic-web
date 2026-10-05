@@ -32,10 +32,17 @@ limitations under the License.
           <el-tag size="small" effect="plain" type="info">{{ agent.mode }}</el-tag>
         </div>
       </div>
-      <span class="status" :title="`状态：${statusMeta.label}`">
-        <i class="status-dot" :style="{ background: statusMeta.color }" />
-        {{ statusMeta.label }}
-      </span>
+      <el-tooltip
+        :content="`状态：${statusMeta.label}`"
+        effect="dark"
+        :show-after="500"
+        placement="top"
+      >
+        <span class="status">
+          <i class="status-dot" :style="{ background: statusMeta.color }" />
+          {{ statusMeta.label }}
+        </span>
+      </el-tooltip>
     </div>
 
     <div class="card-meta">
@@ -111,7 +118,7 @@ const roleInitial = computed(() => (props.agent.role || '?').slice(0, 1).toUpper
   border-radius: var(--sf-radius-md);
   color: #fff;
   font-size: var(--sf-font-lg);
-  font-weight: 700;
+  font-weight: 630;
 }
 
 .head-text {
@@ -121,7 +128,7 @@ const roleInitial = computed(() => (props.agent.role || '?').slice(0, 1).toUpper
 
 .agent-id {
   font-size: var(--sf-font-md);
-  font-weight: 600;
+  font-weight: 520;
   color: var(--sf-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;

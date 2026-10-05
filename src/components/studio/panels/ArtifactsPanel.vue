@@ -95,7 +95,7 @@ onMounted(load)
     span {
       flex: 1;
       color: var(--sf-text-disabled);
-      font-size: 10px;
+      font-size: 11px;
     }
   }
 }

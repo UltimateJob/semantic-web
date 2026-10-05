@@ -305,7 +305,7 @@ function inspectRun() {
   flex: none;
 }
 .subtask-row :deep(.device-status) {
-  font-size: 10px;
+  font-size: 11px;
   flex: none;
 }
 .selected-process {

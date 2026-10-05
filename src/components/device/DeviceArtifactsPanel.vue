@@ -113,6 +113,11 @@ const formatTime = (value) =>
 </script>
 
 <style scoped lang="scss">
+.artifacts-panel {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 28px 36px;
+}
 h2 {
   margin: 0;
   font-size: 17px;
@@ -197,7 +202,7 @@ header p {
 .artifact-table > header {
   background: var(--sf-bg-tertiary);
   color: var(--sf-text-disabled);
-  font-weight: 650;
+  font-weight: 520;
 }
 .artifact-table > div > span:first-child {
   display: flex;

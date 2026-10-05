@@ -20,10 +20,13 @@ limitations under the License.
     <header>
       <div>
         <h2>Robot Skill</h2>
-        <p>Server 保存期望版本，Pilot 自动安装并回报实际状态。</p>
+        <p>显示与当前机器人 Ability 匹配的技能，安装后由 Pilot 回报实际状态。</p>
       </div>
       <span>目录 revision {{ robot?.skill_catalog_revision || 0 }}</span>
     </header>
+    <p v-if="!availableSkills.length" class="debug-hint">
+      暂无与当前机器人 Ability 匹配的 Robot Skill。
+    </p>
     <div class="skills-grid">
       <article
         v-for="skill in availableSkills"
@@ -91,7 +94,9 @@ limitations under the License.
       :robot="robot"
       :skill="selectedSkill"
     />
-    <p v-else-if="inlineDebug" class="debug-hint">选择一个技能查看正式输入契约并进行人工调试。</p>
+    <p v-else-if="inlineDebug && availableSkills.length" class="debug-hint">
+      选择一个技能查看正式输入契约并进行人工调试。
+    </p>
   </section>
 </template>
 
@@ -100,6 +105,7 @@ import { computed, ref, watch } from 'vue'
 import { ElMessageBox } from 'element-plus'
 import DeviceStatus from '@/components/device/DeviceStatus.vue'
 import RobotSkillDebugPanel from '@/components/device/RobotSkillDebugPanel.vue'
+import { installableRobotSkills } from '@/devices/skillCompatibility'
 import { useDeviceStore } from '@/stores/device'
 import { useLayoutStore } from '@/stores/layout'
 import { useProjectStore } from '@/stores/project'
@@ -127,12 +133,7 @@ const devices = useDeviceStore()
 const layout = useLayoutStore()
 const project = useProjectStore()
 const ui = useUiStore()
-const availableSkills = computed(() =>
-  devices.skillPackages.filter(
-    (skill) =>
-      !skill.compatible_models?.length || skill.compatible_models.includes(props.robot.model)
-  )
-)
+const availableSkills = computed(() => installableRobotSkills(devices.skillPackages, props.robot))
 const desired = (skill) =>
   props.robot.desired_skills?.find(
     (item) => item.name === skill.name && item.version === skill.version
@@ -209,6 +210,11 @@ async function remove(skill) {
 </script>
 
 <style scoped lang="scss">
+.skills-panel {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 28px 36px;
+}
 .skills-panel > header {
   display: flex;
   align-items: flex-start;

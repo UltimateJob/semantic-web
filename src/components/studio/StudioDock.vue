@@ -490,7 +490,11 @@ defineExpose({
   height: 100%;
 }
 
-.studio-dock :deep(.dv-dockview) {
+/* Dockview 的“溢出选项卡”弹层渲染在与 .dv-dockview 同级的
+ * .dv-popover-anchor（shell 内）里，二者必须同时挂上主题变量，
+ * 否则弹层只会继承 dockview 内置深色主题变量，导致亮色下仍发暗。 */
+.studio-dock :deep(.dv-dockview),
+.studio-dock :deep(.dv-popover-anchor) {
   --dv-activegroup-visiblepanel-tab-background-color: var(--sf-bg-secondary);
   --dv-activegroup-hiddenpanel-tab-background-color: var(--sf-bg-tertiary);
   --dv-inactivegroup-visiblepanel-tab-background-color: var(--sf-bg-tertiary);

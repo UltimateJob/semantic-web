@@ -368,7 +368,7 @@ onMounted(async () => {
 .commands {
   padding: 16px;
   border: 1px solid var(--sf-border-light);
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--sf-bg-primary);
 }
 
@@ -415,7 +415,7 @@ onMounted(async () => {
     max-height: 300px;
     padding: 10px;
     overflow: auto;
-    border-radius: 7px;
+    border-radius: 6px;
     background: var(--sf-bg-tertiary);
     font-size: 11px;
   }

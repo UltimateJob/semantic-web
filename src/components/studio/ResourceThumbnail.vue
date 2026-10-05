@@ -17,13 +17,14 @@ limitations under the License.
 
 <template>
   <span class="resource-thumbnail" :class="{ empty: !src }" aria-hidden="true">
-    <img v-if="src" :src="src" :alt="alt" />
+    <ScenePreviewImage v-if="src" :src="src" :alt="alt" />
     <component :is="fallbackIcon" v-else />
   </span>
 </template>
 
 <script setup>
 import { PictureRounded } from '@element-plus/icons-vue'
+import ScenePreviewImage from '@/components/simulation/ScenePreviewImage.vue'
 
 defineProps({
   src: { type: String, default: '' },
@@ -44,7 +45,7 @@ defineProps({
   background: var(--sf-bg-tertiary);
   place-items: center;
 }
-.resource-thumbnail img {
+.resource-thumbnail :deep(img) {
   width: 100%;
   height: 100%;
   object-fit: cover;

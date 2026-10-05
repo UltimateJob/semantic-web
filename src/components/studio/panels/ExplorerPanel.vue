@@ -63,7 +63,7 @@ const open = (type) => openStudioPanel(type)
     span,
     small {
       color: var(--sf-text-disabled);
-      font-size: 10px;
+      font-size: 11px;
     }
 
     b {
@@ -79,10 +79,10 @@ const open = (type) => openStudioPanel(type)
 
 .section-title {
   padding: 0 7px 7px;
-  color: var(--sf-text-disabled);
+  color: var(--sf-brand);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 380;
+  letter-spacing: 0.09em;
 }
 
 .resource-row {
@@ -118,7 +118,7 @@ const open = (type) => openStudioPanel(type)
 
   small {
     color: var(--sf-text-disabled);
-    font-size: 10px;
+    font-size: 11px;
   }
 
   &:hover {
@@ -133,7 +133,7 @@ const open = (type) => openStudioPanel(type)
   border-radius: var(--sf-radius-md);
   background: var(--sf-brand-soft);
   color: var(--sf-text-secondary);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.55;
 }
 </style>

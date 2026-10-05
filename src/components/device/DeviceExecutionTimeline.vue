@@ -477,7 +477,7 @@ h5 {
 .eyebrow {
   color: var(--sf-role-robot);
   font-size: var(--sf-font-xs);
-  font-weight: 800;
+  font-weight: 520;
   letter-spacing: 0.12em;
 }
 .header-actions {
@@ -572,7 +572,7 @@ h5 {
   color: var(--sf-text-primary);
   font-family: ui-monospace, monospace;
   font-size: var(--sf-font-sm);
-  font-weight: 700;
+  font-weight: 520;
 }
 .stage-clock i {
   width: 30px;
@@ -694,7 +694,7 @@ h5 {
 .action-list span {
   color: var(--sf-role-robot);
   font-size: var(--sf-font-xs);
-  font-weight: 700;
+  font-weight: 520;
   letter-spacing: 0.08em;
 }
 .action-list b {

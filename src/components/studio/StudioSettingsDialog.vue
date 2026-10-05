@@ -166,7 +166,7 @@ watch(
       gap: 10px;
       padding: 11px 12px;
       border: 0;
-      border-radius: 9px;
+      border-radius: 8px;
       color: var(--sf-text-secondary);
       background: transparent;
       text-align: left;
@@ -222,7 +222,7 @@ watch(
     gap: 24px;
     padding: 15px 16px;
     border: 1px solid var(--sf-border-light);
-    border-radius: 10px;
+    border-radius: 8px;
     background: var(--sf-bg-secondary);
   }
 
