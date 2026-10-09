@@ -115,7 +115,6 @@ button.el-button {
   }
   &.el-button--info {
     background-color: rgba(24, 76, 252, 0.1) !important;
-    // border-color: rgba(24, 76, 252, 0.10) !important ;
     color: var(--el-color-primary) !important;
     &:hover,
     &:focus {
@@ -154,10 +153,10 @@ button.el-button {
   }
 }
 
-// =====================================================================
+// ----
 // 可读性修正：兼容浅/深两套 EP 变量，保证按钮任何状态下文字都清晰
 // （上面的规则把 plain/text/link 变体也强制成了实心底色，导致彩色文字落在同色底上看不清）
-// =====================================================================
+// ----
 
 // 1) plain 变体：彩色文字 + 浅色底（EP 变量 light-9），不做实心
 .el-button.is-plain:not(.is-disabled) {

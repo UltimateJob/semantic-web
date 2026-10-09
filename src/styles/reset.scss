@@ -2,7 +2,7 @@
 @use 'sass:map';
 @use 'sass:math';
 
-// ========== 1. 覆盖 Element Plus 内置变量（修正语法错误） ==========
+// ---- 1. 覆盖 Element Plus 内置变量（修正语法错误） ----
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   // 自定义颜色变量（含 hover/active 梯度色）
   $colors: (
@@ -174,7 +174,7 @@ img {
   clear: both;
 }
 
-// ========== 3. Element Plus 组件样式统一覆盖（合并重复的按钮样式） ==========
+// ---- 3. Element Plus 组件样式统一覆盖（合并重复的按钮样式） ----
 :root {
   // 自定义全局间距变量
   --el-custom-spacing-xs: 4px;
@@ -357,11 +357,11 @@ img {
   }
 }
 
-// ============================================================
+// ----
 // html.dark 深色模式整体适配
 // 浮层（select 下拉 / dropdown / popover）此前被统一为白色玻璃，
 // 这里在深色模式下切换为深玻璃，并修正硬编码浅色导致的低对比文字。
-// ============================================================
+// ----
 html.dark {
   // 弹窗：标题 / 提示文字使用主题色，避免深底深字看不清
   .el-dialog__header {
